@@ -3,78 +3,82 @@ using namespace std;
 class stack
 {
 public:
-const static int size = 20;
-int top = -1;
-char array[size];
-void push(char x)
-{
-if (top == size - 1)
-{
-cout << "stack overflow";
-return;
-}
-array[++top] = x;
-}
-char pop()
-{
-if (top == -1)
-{
-cout << "stack underflow";
-return -1;
-}
-return array[top--];
-}
-void display()
-{
-if (top == -1)
-{
-cout << "stack is empty";
-}
-cout << "stack contains:";
-for (int i = 0; i <= top; i++)
-{
-cout << array[i] << "";
-}
-cout << endl;
-}
+    const static int size = 20;
+    int top = -1;
+    char array[size];
+
+    void push(char x)
+    {
+        if (top == size - 1)
+        {
+            cout << "stack overflow";
+            return;
+        }
+        array[++top] = x;
+    }
+    char pop()
+    {
+        if (top == -1)
+        {
+            cout << "stack underflow";
+            return -1;
+        }
+        return array[top--];
+    }
+    void display()
+    {
+        if (top == -1)
+        {
+            cout << "stack is empty";
+        }
+        cout << "stack contains:";
+        for (int i = 0; i <= top; i++)
+        {
+            cout << array[i] << "";
+        }
+        cout << endl;
+    }
 };
 int main()
 {
-stack s;
-string useri;
-cout << "Enter the String:";
-getline(cin, useri);
-string orgstr = "";
-for (int i = 0; i < useri.size(); i++)
-{
-char ch = useri[i];
-if (ch >= 'a' and ch <= 'z')
-{
-ch = (char)(ch - 'a' + 'A');
-}
-if (ch >= 'A' and ch <= 'z')
-{
-s.push(ch);
-orgstr.push_back(ch);
-}
-}
-cout << "Original String:" << orgstr << endl;
-string rev_str = "";
-while (s.top != -1)
-{
-rev_str.push_back(s.pop());
-}
-cout << "Reversed String" << rev_str << endl;
-bool is_palindrome = true;
-for (int i = 0; i < orgstr.size(); i++)
-{
-if (orgstr[i] != rev_str[i])
-{
-bool is_palindrome = false;
-cout << "String is not Palindrome";
-break;
-}
-cout << "String is Palindrome";
-break;
-}
+    stack s;
+    
+    string useri;
+    cout << "enter the string:";
+    getline(cin, useri);
+    string orgstr = "";
+    for (int i = 0; i < useri.size(); i++)
+    {
+        char ch = useri[i];
+        if (ch >= 'a' and ch <= 'z')
+        {
+            ch = (char)(ch - 'a' + 'A');
+        }
+        if (ch >= 'A' and ch <= 'z')
+        {
+            s.push(ch);
+            orgstr.push_back(ch);
+        }
+    }
+    cout << "original string:" << orgstr << endl;
+    
+    string rev_str = "";
+    while (s.top != -1)
+    {
+        rev_str.push_back(s.pop());
+    }
+    cout << "reversed string" << rev_str << endl;
+    bool is_palindrome = true;
+    for (int i = 0; i < orgstr.size(); i++)
+    {
+        if (orgstr[i] != rev_str[i])
+        {
+            bool is_palindrome = false;
+            cout << "string is not pali";
+            break;
+        }
+        cout << "string is pali";
+        break;
+    }
+    
 }
